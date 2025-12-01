@@ -4,14 +4,8 @@
   <meta charset="UTF-8">
   <title>Honeycomb TC | Transaction Coordination</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--
-    Simple, responsive single-page site for Honeycomb TC
-    Pure HTML + CSS (no JS, no frameworks)
-  -->
+
   <style>
-    /* -------------------------
-       Root + Global Styles
-    -------------------------- */
     :root {
       --gold: #D4AF37;
       --gold-dark: #8a6e1f;
@@ -21,15 +15,7 @@
       --border-soft: #e1d6c2;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100%;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -38,84 +24,35 @@
       line-height: 1.6;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+    img { max-width: 100%; display: block; }
 
     h1, h2, h3 {
-      font-family: "Georgia", "Times New Roman", serif;
+      font-family: "Georgia", serif;
       color: var(--gold-dark);
-      letter-spacing: 0.04em;
     }
 
-    a {
-      color: var(--gold-dark);
-      text-decoration: none;
-    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-    }
+    section { padding: 4rem 0; }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      padding: 4rem 0;
-    }
-
-    /* -------------------------
-       HERO SECTION
-    -------------------------- */
+    /* HERO */
     .hero {
-      background-color: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       text-align: center;
       padding: 5rem 1.5rem 4rem;
+      background-color: var(--cream);
     }
 
-    .hero-inner {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .hero-logo {
-      width: 140px;
-      margin: 0 auto 1.5rem;
-    }
-
-    .hero-title {
-      font-size: 2.4rem;
-      margin-bottom: 0.75rem;
-      color: var(--gold);
-    }
-
-    .hero-tagline {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 620px;
-      margin: 0 auto;
-    }
+    .hero-logo { width: 140px; margin: 0 auto 1.5rem; }
+    .hero-title { font-size: 2.4rem; color: var(--gold); }
+    .hero-tagline { color: var(--text-muted); margin-top: 0.5rem; }
 
     .hero-divider {
-      width: 70px;
-      height: 2px;
+      width: 70px; height: 2px;
       background: linear-gradient(to right, transparent, var(--gold), transparent);
-      margin: 2rem auto 0;
-      border-radius: 999px;
+      margin: 2rem auto;
     }
 
-    /* -------------------------
-       SERVICES SECTION
-    -------------------------- */
+    /* SERVICES */
     .section-heading {
       text-align: center;
       margin-bottom: 2.5rem;
@@ -123,342 +60,192 @@
     }
 
     .services-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: flex; flex-wrap: wrap;
       gap: 2rem;
     }
 
     .service-card {
       flex: 1 1 280px;
-      background-color: #fdfaf4;
+      background: #fdfaf4;
       border: 1px solid var(--border-soft);
       border-radius: 12px;
       padding: 2rem 1.75rem;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
     }
 
-    .service-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.75rem;
-      gap: 0.75rem;
-    }
-
-    .service-title {
-      font-size: 1.25rem;
-    }
-
-    .service-price {
+    .contact-pricing {
+      margin-top: 0.75rem;
+      display: inline-block;
       font-weight: 600;
       color: var(--gold-dark);
-      font-family: "Georgia", "Times New Roman", serif;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
     }
 
-    .service-subtitle {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .service-list {
-      list-style: none;
-      padding-left: 0;
-      font-size: 0.95rem;
-    }
-
-    .service-list li {
-      position: relative;
-      padding-left: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-
+    .service-list { list-style: none; margin-top: 1rem; }
+    .service-list li { margin-bottom: 0.5rem; padding-left: 1rem; position: relative; }
     .service-list li::before {
       content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
       color: var(--gold-dark);
+      position: absolute; left: 0;
     }
 
-    /* -------------------------
-       CONTACT SECTION
-    -------------------------- */
-    .contact-wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2.5rem;
-      align-items: flex-start;
-    }
-
-    .contact-info,
-    .contact-form {
-      flex: 1 1 280px;
-    }
-
-    .contact-info p {
-      margin-bottom: 0.75rem;
-      font-size: 0.98rem;
-    }
-
-    .contact-label {
-      font-weight: 600;
-      color: var(--gold-dark);
-    }
-
+    /* CONTACT */
+    .contact-wrapper { display: flex; flex-wrap: wrap; gap: 2.5rem; }
     .contact-card {
-      background-color: #fdfaf4;
-      border-radius: 12px;
+      background: #fdfaf4;
       border: 1px solid var(--border-soft);
+      border-radius: 12px;
       padding: 2rem 1.75rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
     }
 
-    form {
-      display: grid;
-      gap: 1rem;
-    }
+    label { font-weight: 500; margin-bottom: 0.3rem; display: block; }
 
-    label {
-      display: block;
-      font-size: 0.95rem;
-      margin-bottom: 0.35rem;
-      font-weight: 500;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    textarea {
+    input, textarea {
       width: 100%;
       padding: 0.7rem 0.85rem;
       border-radius: 8px;
       border: 1px solid #d7c9ae;
-      background-color: #fffdfa;
-      font: inherit;
-      color: var(--text-main);
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
-      resize: vertical;
-      min-height: 44px;
+      background: #fffdfa;
     }
 
-    textarea {
-      min-height: 130px;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.18);
-    }
+    textarea { min-height: 130px; }
 
     .btn-submit {
-      border: none;
       padding: 0.8rem 1.4rem;
       border-radius: 999px;
       background: linear-gradient(135deg, var(--gold), #e5c86a);
-      color: #fffdfa;
+      color: white;
       font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      border: none;
       cursor: pointer;
-      justify-self: flex-start;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+      margin-top: 0.5rem;
     }
 
-    .btn-submit:hover,
-    .btn-submit:focus {
-      filter: brightness(1.05);
-      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
-      transform: translateY(-1px);
-      outline: none;
-    }
-
-    .btn-submit:active {
-      transform: translateY(0);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    }
-
-    /* -------------------------
-       FOOTER
-    -------------------------- */
+    /* FOOTER */
     footer {
-      background-color: var(--gold-dark);
+      background: var(--gold-dark);
       color: #f9f4e8;
       text-align: center;
-      padding: 1.4rem 1rem;
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
+      padding: 1.4rem;
     }
 
-    /* -------------------------
-       RESPONSIVE BEHAVIOR
-    -------------------------- */
     @media (max-width: 768px) {
-      .hero {
-        padding-top: 4rem;
-      }
-
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .services-grid {
-        flex-direction: column;
-      }
-
-      .contact-wrapper {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 1.8rem;
-      }
-
-      section {
-        padding: 3rem 0;
-      }
+      .services-grid, .contact-wrapper { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========================
-       HERO SECTION
-  ========================== -->
+  <!-- HERO -->
   <header class="hero">
-    <div class="hero-inner container">
-      <!-- Logo placeholder – replace logo.png with your actual file -->
+    <div class="container">
       <div class="hero-logo">
         <img src="logo.png" alt="Honeycomb TC logo">
       </div>
 
       <h1 class="hero-title">HONEYCOMB TC</h1>
-      <p class="hero-tagline">
-        Transaction Coordination for Busy Agents &amp; Real Estate Investors
-      </p>
-
-      <div class="hero-divider" aria-hidden="true"></div>
+      <p class="hero-tagline">Transaction Coordination for Busy Agents & Real Estate Investors</p>
+      <div class="hero-divider"></div>
     </div>
   </header>
 
-  <main>
-    <!-- ========================
-         SERVICES SECTION
-    ========================== -->
-    <section id="services">
-      <div class="container">
-        <h2 class="section-heading">Our Services</h2>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-heading">Our Services</h2>
 
-        <div class="services-grid">
-          <!-- Essential TC Package -->
-          <article class="service-card">
-            <div class="service-title-row">
-              <h3 class="service-title">Essential TC Package</h3>
-              <span class="service-price">$350</span>
-            </div>
-            <p class="service-subtitle">
-              Contract-to-close support for residential purchase and sale agreements.
-            </p>
-            <ul class="service-list">
-              <li>Contract-to-close coordination</li>
-              <li>Timeline &amp; compliance management</li>
-              <li>Communication with agents, title, lenders, inspectors</li>
-              <li>Weekly updates</li>
-              <li>File organization &amp; closing package</li>
-            </ul>
-          </article>
+      <div class="services-grid">
 
-          <!-- Investor TC Package -->
-          <article class="service-card">
-            <div class="service-title-row">
-              <h3 class="service-title">Investor TC Package</h3>
-              <span class="service-price">$450</span>
+        <!-- Essential TC Package -->
+        <article class="service-card">
+          <h3>Essential TC Package</h3>
+          <a class="contact-pricing" href="mailto:bee@honeycombtc.com">Contact for Pricing</a>
+
+          <ul class="service-list">
+            <li>Contract-to-close coordination</li>
+            <li>Timeline & compliance management</li>
+            <li>Communication with agents, title, lenders, inspectors</li>
+            <li>Weekly updates</li>
+            <li>File organization & closing package</li>
+          </ul>
+        </article>
+
+        <!-- Investor TC Package -->
+        <article class="service-card">
+          <h3>Investor TC Package</h3>
+          <a class="contact-pricing" href="mailto:bee@honeycombtc.com">Contact for Pricing</a>
+
+          <ul class="service-list">
+            <li>All features of Essential</li>
+            <li>Creative deal paperwork</li>
+            <li>Subto, seller finance, novation coordination</li>
+            <li>Transaction comp tracking</li>
+            <li>Multi-party communication</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+<!-- ========================
+     CONTACT SECTION
+========================== -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-heading">Contact Us</h2>
+
+    <div class="contact-wrapper">
+
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <p>
+          We help you create a smoother, more organized closing experience so you can
+          stay focused on relationships and revenue.
+        </p>
+
+        <p>
+          <span class="contact-label">Email:</span>
+          <a href="mailto:bee@honeycombtc.com">bee@honeycombtc.com</a>
+        </p>
+
+        <p style="margin-top: 1.25rem; font-size: 0.95rem; color: var(--text-muted);">
+          Share a few details about your upcoming transaction and we’ll follow up
+          with availability and next steps.
+        </p>
+      </div>
+
+      <!-- Contact Form (sends to n8n webhook) -->
+      <div class="contact-form">
+        <div class="contact-card">
+          <form action="https://n8n.srv962330.hstgr.cloud/webhook/honeycomb-tc-contact" method="POST">
+            
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required placeholder="Your full name">
             </div>
-            <p class="service-subtitle">
-              Tailored coordination for creative deals and investment transactions.
-            </p>
-            <ul class="service-list">
-              <li>All features of Essential</li>
-              <li>Includes creative deal paperwork</li>
-              <li>Subto, seller finance, novation coordination</li>
-              <li>Transaction comp tracking</li>
-              <li>Multi-party communication</li>
-            </ul>
-          </article>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required placeholder="you@example.com">
+            </div>
+
+            <div>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Tell us about your transaction or question"></textarea>
+            </div>
+
+            <button class="btn-submit" type="submit">Send Message</button>
+          </form>
         </div>
       </div>
-    </section>
 
-    <!-- ========================
-         CONTACT SECTION
-    ========================== -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-heading">Contact Us</h2>
+    </div>
+  </div>
+</section>
 
-        <div class="contact-wrapper">
-          <!-- Contact Information -->
-          <div class="contact-info">
-            <p>
-              We help you create a smoother, more organized closing experience so you can
-              stay focused on relationships and revenue.
-            </p>
-            <p>
-              <span class="contact-label">Email:</span>
-              <a href="mailto:thomas@eastmeadowproperties.com">
-                thomas@eastmeadowproperties.com
-              </a>
-            </p>
-            <p>
-              <span class="contact-label">Phone:</span>
-              <a href="tel:15309197350">530-919-7350</a>
-            </p>
-            <p style="margin-top:1rem; font-size:0.95rem; color:var(--text-muted);">
-              Share a few details about your upcoming transaction and we’ll follow up
-              with availability and next steps.
-            </p>
-          </div>
 
-          <!-- Contact Form (non-functional placeholder) -->
-          <div class="contact-form">
-            <div class="contact-card">
-              <form action="#" method="post">
-                <div>
-                  <label for="name">Name</label>
-                  <input id="name" type="text" name="name" placeholder="Your full name">
-                </div>
-
-                <div>
-                  <label for="email">Email</label>
-                  <input id="email" type="email" name="email" placeholder="you@example.com">
-                </div>
-
-                <div>
-                  <label for="message">Message</label>
-                  <textarea id="message" name="message" placeholder="Tell us about your transaction or question"></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Send Message</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ========================
-       FOOTER
-  ========================== -->
+  <!-- FOOTER -->
   <footer>
     © 2025 Honeycomb TC — All Rights Reserved
   </footer>
+
 </body>
 </html>
